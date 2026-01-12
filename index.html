@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Mobile Only Perfect View -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Happy Birthday My Love ❤️</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to bottom, #ff758c, #ff7eb3);
+            color: white;
+            text-align: center;
+        }
+
+        .container {
+            padding: 30px 15px;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+        }
+
+        .heart {
+            font-size: 70px;
+            animation: heartbeat 1.2s infinite;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .countdown {
+            font-size: 1.6rem;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+
+        button {
+            padding: 14px 28px;
+            font-size: 16px;
+            border-radius: 30px;
+            border: none;
+            background: white;
+            color: #ff4f81;
+            cursor: pointer;
+        }
+
+        .hidden {
+            display: none;
+            margin-top: 30px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .gallery img {
+            width: 100%;
+            border-radius: 15px;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.25); }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Background Music -->
+<audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function startSurprise() {
+    document.getElementById("bgMusic").play();
+}
+</script>
+
+
+<div class="container">
+    <h1>🎂 Happy Birthday My Love 🎂</h1>
+    <div class="heart">❤️</div>
+
+    <p>
+        The world feels warmer today,  
+        because someone incredibly special was born.  
+        You are my smile, my calm, and my favorite thought 💕
+    </p>
+
+    <div class="countdown" id="countdown"></div>
+
+    <button onclick="startSurprise()">Tap for Surprise 💌</button>
+
+    <div id="surprise" class="hidden">
+        <p>
+            Loving you is the easiest thing my heart has ever done.  
+            I don’t need perfect days —  
+            I just need **you**, every day ❤️  
+            <br><br>
+            Happy Birthday, my forever 🥺💖
+        </p>
+
+        <div class="gallery">
+            <img src="photo1.jpg">
+            <img src="photo2.jpg">
+            <img src="photo3.jpg">
+            <img src="photo4.jpg">
+        </div>
+    </div>
+</div>
+
+<script>
+    function startSurprise() {
+        document.getElementById("surprise").style.display = "block";
+        document.getElementById("bgMusic").play();
+    }
+
+    function updateCountdown() {
+        let now = new Date();
+        let midnight = new Date();
+        midnight.setHours(24, 0, 0, 0);
+
+        let diff = midnight - now;
+
+        let h = Math.floor(diff / (1000 * 60 * 60));
+        let m = Math.floor((diff / (1000 * 60)) % 60);
+        let s = Math.floor((diff / 1000) % 60);
+
+        let text = (diff > 0)
+            ? `${h}h ${m}m ${s}s till your moment 🎉`
+            : "🎉 It’s Your Birthday! 🎉";
+
+        document.getElementById("countdown").innerHTML = text;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+</script>
+
+</body>
+</html>
